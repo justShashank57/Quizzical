@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Main from "./components/main";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Quiz from "./components/quiz";
+
+export default function App(){
+    const [show,setShow]=React.useState(true);
+    function handleClick(){
+        setShow(prevState=>!prevState)
+    }
+    return (<>
+        { show && <Main handleClick={handleClick}/>}
+        { !show && <Quiz/>}
+    </>
+    )
 }
-
-export default App;
